@@ -50,7 +50,7 @@ function SearchWord(){
         var image_div = document.createElement("div");
         $(image_div).attr("class", "picture scrollable");
 
-        console.log(found_word_num,word_image_list);
+        //console.log(found_word_num,word_image_list);
 
         for (var j = 0; j < word_image_list.length; j++) {
             var note = word_image_list[j];
@@ -58,7 +58,7 @@ function SearchWord(){
             var left_match = note.match(img_position_left);
             var top_match = note.match(img_position_top);
 
-            console.log(note,pic_match,left_match,top_match);
+            //console.log(note,pic_match,left_match,top_match);
             var pic_name = pic_match[0].slice(0, -2);
             var folder_character = pic_name.slice(0, 1);
             var left_location = left_match[0].slice(2, -1);
@@ -77,7 +77,9 @@ function SearchWord(){
             });
 
             $(note_image).appendTo(image_div);
+
         }
+        console.log(image_div);
         image_column.appendChild(image_div);
         table_row.appendChild(image_column);
 
