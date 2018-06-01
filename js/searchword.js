@@ -67,7 +67,7 @@ function SearchWord(){
             var note_image = document.createElement("img");
             //$(note_image).attr("href","https://github.com/yizhouzhao/yizhouzhao.github.io/edit/master/");
             //$(note_image).attr("src", "data/Extended/Left/" + folder_character + "/" + pic_name + ".GIF");
-            $(note_image).attr("src", "data/Extended/Left/" + folder_character + "/" + pic_name + ".GIF");
+            $(note_image).attr("src", "data/Extended/Left/" + folder_character + "/" + pic_name + ".gif");
             $(note_image).css({
                 'position': 'absolute',
                 'left': (left_location * 0.05).toString(),
