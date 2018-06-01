@@ -75,9 +75,7 @@ function SearchWord(){
                 'height': 'auto',
                 'width': 'auto'
             });
-
             $(note_image).appendTo(image_div);
-
         }
         console.log(image_div);
         image_column.appendChild(image_div);
