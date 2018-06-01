@@ -1,77 +1,8 @@
-$(document).ready(function () {
-   LoadIcons();
-});
-
-
 const g_basic_icon_num = [60,7,21,63,34,52,58,8,15,32,7,7,44,
-                        42,54,11,7,25,45,35,41,39,25,8,8,11];
-
-function LoadIcons() {
-    let word_ul = document.getElementById("word-ul");
-    console.log(word_ul);
-
-    for(let i = 0; i < 26; i++) {
-        // language=HTML
-        let letter = String.fromCharCode(65 + i);
-        const lst_i = `<li class="tab fancyTab">\n
-                        <div class="arrow-down"><div class="arrow-down-inner"></div></div>\n           
-                           <a id="tab0" href="#tabBody${i.toString()}" role="tab" aria-controls="tabBody${i.toString()}    
-                            " aria-selected="true" data-toggle="tab" tabindex="${i.toString()}">
-                            ${letter}   
-                            </a>\n           
-                            <div class="whiteBlock"></div>\n
-                        </li>`;
-        $(word_ul).append(lst_i);
-    }
-
-    let word_content = document.getElementById("myTabContent");
-    $(word_content).empty();
-
-    let i = 0;
-    let letter = String.fromCharCode(65 + i);
-
-    let icon_div_i = $(`<div class="tab-pane  fade active in col-md-12" id="tabBody${i.toString()}
-                    " role="tabpanel" aria-labelledby="tab${i.toString()}" aria-hidden="false" tabindex="${i.toString()}">`);
-
-    // language=HTML
-    let icon_class_i = $(`<div class="col-md-2"><div class="row">Meaning</div></div>`);
-    let icon_btn_i = $(`<button class="btn"><img src="data/Extended/Left/${letter}/${letter}1.gif">?</button>`);
-
-    icon_class_i.prepend(icon_btn_i);
-    icon_btn_i.css({
-       "background-color": "rgba(100,100,200,0.4)",
-        "width" : "50%",
-        "height" : "60px",
-        "margin-top" : "25%"
-    });
-
-    icon_div_i.append(icon_class_i);
-
-    let icon_list_i = $(`<div class="col-md-10"></div>`);
-
-    for(let j = 0; j < g_basic_icon_num[i]; j++){
-        let icon_btn_i_j = $(`<button class="btn"><img src="data/Extended/Left/${letter}/${letter}${(j+1).toString()}.gif"
-                                style="height: 100%; width 100%"></button>`);
-        icon_btn_i_j.css({
-            "background-color": "rgba(100,100,200,0.15)",
-            "width" : "30px",
-            "height" : "30px"
-        });
-
-        icon_list_i.append(icon_btn_i_j);
-    }
-
-    icon_div_i.append(icon_list_i);
-
-    $(word_content).append(icon_div_i);
-
-    console.log(icon_div_i.get()[0]);
-    console.log(word_content);
-
-}
+    42,54,11,7,25,45,35,41,39,25,8,8,11];
 
 const g_basic_list = {
-    "A" : ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A14A", "A15", "A16", "A17", "A17A", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30", "A31", "A32", "A33", "A34", "A35", "A36", "A37", "A38", "A39", "A40", "A41", "A42", "A43", "A44", "A45", "A46", "A47", "A48", "A49", "A50", "A51", "A52", "A53", "A54", "A55", "A56", "A57", "A59"]
+    "A" : ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A14A", "A15", "A16", "A17", "A17A", "A18", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30", "A31", "A32", "A33", "A34", "A35", "A36", "A37", "A38", "A39", "A40", "A41", "A42", "A43", "A44", "A45", "A46", "A47", "A48", "A49", "A50", "A51", "A52", "A53", "A54", "A55", "A56", "A57", "A59"],
     "B" : ["B1","B2","B3","B4","B5","B6","B7","B1","B2","B3","B4","B5","B6","B7"],
     "C" : ["C1","C2","C3","C4","C5","C6","C7","C8","C9","C10","C11","C12","C14","C17","C18","C19","C20","C21"],
     "D" :["D1","D2","D3","D4","D5","D6","D7","D8","D9","D10","D11","D12","D13","D14","D15","D16","D17","D18","D19","D20","D21","D22","D23","D24","D25","D26","D27","D27A","D28","D29","D30","D31","D32","D33","D34","D34A","D35","D36","D37","D38","D39","D40","D41","D42","D43","D44","D45","D46","D46A","D47","D48","D49","D50","D51","D52","D53","D54","D55","D56","D57","D58","D59","D60","D61","D62","D63","D280A"],
@@ -98,3 +29,80 @@ const g_basic_list = {
     "Y":["Y1","Y1v","Y2","Y3","Y4","Y5","Y6","Y7","Y8"],
     "Z":["Z1","Z2","Z3","Z4","Z5","Z6","Z7","Z8","Z9","Z10","Z11"]
 };
+
+function LoadIcons() {
+    let word_ul = document.getElementById("word-ul");
+    let word_content = document.getElementById("myTabContent");
+    console.log(word_ul);
+
+    for(let i = 0; i < 26; i++) {
+        // language=HTML
+        let letter = String.fromCharCode(65 + i);
+        const lst_i = `<li class="tab fancyTab">\n
+                        <div class="arrow-down"><div class="arrow-down-inner"></div></div>\n           
+                           <a id="tab0" href="#tabBody${i.toString()}" role="tab" aria-controls="tabBody${i.toString()}    
+                            " aria-selected="true" data-toggle="tab" tabindex="0">
+                            ${letter}   
+                            </a>\n           
+                            <div class="whiteBlock"></div>\n
+                        </li>`;
+
+        $(word_ul).append(lst_i);
+
+        // let icon_div_p;
+        // if(i === 0)
+        //     icon_div_p= $(`<div class="tab-pane  fade active in col-md-12" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0">
+        //     <h2>This is the content of tab one.</h2>
+        // <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>
+        // </div>`);
+        //
+        // else
+        //     icon_div_p = $(`<div class="tab-pane fade col-md-12" id="tabBody${i.toString()}" role="tabpanel" aria-labelledby="tab${i.toString()}" aria-hidden="true" tabindex="0">\n' +
+        //         '                                        <h2>This is the content of tab ${i.toString()}.</h2>\n' +
+        //         '                                        <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>\n' +
+        //         '\n' +
+        //         '                            </div>`);
+        //
+        // $(word_content).append(icon_div_p);
+
+        let icon_div_i;
+        if (i === 0) icon_div_i = $(`<div class="tab-pane  fade active in col-md-12" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0"></div>`);
+
+        else icon_div_i = $(`<div class="tab-pane fade col-md-12" id="tabBody${i.toString()}" role="tabpanel" aria-labelledby="tab${i.toString()}" aria-hidden="true" tabindex="0"></div>`);
+
+        icon_div_i.append("<p>This is some test</p>");
+
+        // language=HTML
+        let icon_class_i = $(`<div class="col-md-2"><div class="row">Meaning</div></div>`);
+        let icon_btn_i = $(`<button class="btn"><img src="data/Extended/Left/${letter}/${letter}1.gif">?</button>`);
+
+        icon_class_i.prepend(icon_btn_i);
+        icon_btn_i.css({
+            "background-color": "rgba(100,100,200,0.4)",
+            "width" : "auto",
+            "height" : "auto",
+            "margin-top" : "25%"
+        });
+
+        icon_div_i.append(icon_class_i);
+
+        let icon_list_i = $(`<div class="col-md-10"></div>`);
+
+        for(let j = 0; j < g_basic_list[letter].length; j++){
+            let icon_btn_i_j = $(`<button class="btn mini-icon-btn"
+                                style="background-color:rgba(${(i*100 % 256).toString()},0,0,0.15)"
+                                ><img class="mini-icon" src="data/Extended/Left/${letter}/${g_basic_list[letter][j]}.gif"
+                                ></button>`);
+
+            icon_list_i.append(icon_btn_i_j);
+        }
+
+        let other_icon_i = $('<button class="btn mini-other-icon">...</button>');
+
+        icon_list_i.append(other_icon_i);
+        icon_div_i.append(icon_list_i);
+
+        $(word_content).append(icon_div_i);
+    }
+    console.log(word_content);
+}
