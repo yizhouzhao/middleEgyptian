@@ -1,0 +1,30 @@
+.mini-icon {
+    transform: scale(0.6, 0.6);
+    -ms-transform: scale(0.6, 0.6);
+    -webkit-transform: scale(0.6, 0.6)
+}
+
+.mini-icon-btn {
+    width : auto;
+    height : auto;
+    margin : 2px;
+    overflow : hidden
+}
+
+.mini-other-icon {
+    width : 60px;
+    height : 30px;
+    margin : 2px
+}
+
+.big-icon-btn {
+    width : auto;
+    height : auto;
+    margin-top : 25%
+}
+
+#myTabContent {
+    max-height: 300px;
+    margin-right: 20px;
+    overflow: auto;
+}
