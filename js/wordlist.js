@@ -112,6 +112,10 @@ function LoadIcons() {
                     style="background-color: rgba(${color[0]},${color[1]},${color[2]},0.25)"
                     >...</button>`);
 
+        other_icon_i.click(function() {
+            $('#search-form-text-2').val($('#search-form-text-2').val() + letter + " ");
+        });
+
         icon_list_i.append(other_icon_i);
         icon_div_i.append(icon_list_i);
 
