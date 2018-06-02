@@ -140,5 +140,5 @@ function MatchSearch(pattern){
         if(characters[i].length === 1)
             regex_need += "\\d+[A-Z]*";
     }
-    return regex_need + ".*";
+    return regex_need + "($|\\s-\\s.*)";
 }
