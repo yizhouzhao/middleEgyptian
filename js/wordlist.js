@@ -84,9 +84,9 @@ function LoadIcons() {
 
         const color = [((i+1) * 100 % 256).toString(),(i * 200 % 256).toString(),(i * 300 % 256).toString()];
         // language=HTML
-        let icon_class_i = $(`<div class="col-md-2"><button id="any-${letter}" class="btn big-icon-btn"
+        let icon_class_i = $(`<div class="col-md-2" style="text-align: center"><button id="any-${letter}" class="btn big-icon-btn"
                             style="background-color: rgba(${color[0]},${color[1]},${color[2]},0.4)"
-                            ><img src="data/Extended/Left/${letter}/${letter}1.gif">Any ${letter}</button><div class="row">Meaning</div></div>`);
+                            ><img src="data/Extended/Left/${letter}/${letter}1.gif">Any ${letter}</button><div class="row"><strong>${g_classification[letter]}</strong></div></div>`);
 
         icon_class_i.first().click(function() {
             $('#search-form-text-2').val($('#search-form-text-2').val() + letter + " ");
