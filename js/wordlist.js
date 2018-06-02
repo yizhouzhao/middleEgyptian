@@ -110,7 +110,7 @@ function LoadIcons() {
 
         let other_icon_i = $(`<button class="btn mini-other-icon" data-id="${letter}"
                     style="background-color: rgba(${color[0]},${color[1]},${color[2]},0.25)"
-                    >...</button>`);
+                    >...any..other...</button>`);
 
         other_icon_i.click(function() {
             $('#search-form-text-2').val($('#search-form-text-2').val() + letter + " ");
