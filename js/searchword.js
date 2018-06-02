@@ -1,15 +1,4 @@
-$(document).ready(function () {
-    let input = document.getElementById("search-form-text");
-    //Add Keyboard Listener to trigger Enter key
-    input.addEventListener("keyup",function (event) {
-        event.preventDefault();
-        if(event.keyCode === 13){
-            document.getElementById("search-form-button").click();
-        }
-    })
 
-    LoadIcons();
-});
 
 /**
  * @return {number}

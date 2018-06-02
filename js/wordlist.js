@@ -38,66 +38,41 @@ function LoadIcons() {
     for(let i = 0; i < 26; i++) {
         // language=HTML
         let letter = String.fromCharCode(65 + i);
-        const lst_i = `<li class="tab fancyTab">\n
-                        <div class="arrow-down"><div class="arrow-down-inner"></div></div>\n           
+        const lst_i = `<li>       
                            <a id="tab0" href="#tabBody${i.toString()}" role="tab" aria-controls="tabBody${i.toString()}    
                             " aria-selected="true" data-toggle="tab" tabindex="0">
                             ${letter}   
-                            </a>\n           
-                            <div class="whiteBlock"></div>\n
+                            </a>       
                         </li>`;
 
         $(word_ul).append(lst_i);
-
-        // let icon_div_p;
-        // if(i === 0)
-        //     icon_div_p= $(`<div class="tab-pane  fade active in col-md-12" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0">
-        //     <h2>This is the content of tab one.</h2>
-        // <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>
-        // </div>`);
-        //
-        // else
-        //     icon_div_p = $(`<div class="tab-pane fade col-md-12" id="tabBody${i.toString()}" role="tabpanel" aria-labelledby="tab${i.toString()}" aria-hidden="true" tabindex="0">\n' +
-        //         '                                        <h2>This is the content of tab ${i.toString()}.</h2>\n' +
-        //         '                                        <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>\n' +
-        //         '\n' +
-        //         '                            </div>`);
-        //
-        // $(word_content).append(icon_div_p);
 
         let icon_div_i;
         if (i === 0) icon_div_i = $(`<div class="tab-pane  fade active in col-md-12" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0"></div>`);
 
         else icon_div_i = $(`<div class="tab-pane fade col-md-12" id="tabBody${i.toString()}" role="tabpanel" aria-labelledby="tab${i.toString()}" aria-hidden="true" tabindex="0"></div>`);
 
-        icon_div_i.append("<p>This is some test</p>");
-
+        const color = [((i+1) * 100 % 256).toString(),(i * 200 % 256).toString(),(i * 300 % 256).toString()];
         // language=HTML
-        let icon_class_i = $(`<div class="col-md-2"><div class="row">Meaning</div></div>`);
-        let icon_btn_i = $(`<button class="btn"><img src="data/Extended/Left/${letter}/${letter}1.gif">?</button>`);
-
-        icon_class_i.prepend(icon_btn_i);
-        icon_btn_i.css({
-            "background-color": "rgba(100,100,200,0.4)",
-            "width" : "auto",
-            "height" : "auto",
-            "margin-top" : "25%"
-        });
+        let icon_class_i = $(`<div class="col-md-2"><button data-id="${letter}" class="btn big-icon-btn"
+                            style="background-color: rgba(${color[0]},${color[1]},${color[2]},0.4)"
+                            ><img src="data/Extended/Left/${letter}/${letter}1.gif">?</button><div class="row">Meaning</div></div>`);
 
         icon_div_i.append(icon_class_i);
-
         let icon_list_i = $(`<div class="col-md-10"></div>`);
 
         for(let j = 0; j < g_basic_list[letter].length; j++){
-            let icon_btn_i_j = $(`<button class="btn mini-icon-btn"
-                                style="background-color:rgba(${(i*100 % 256).toString()},0,0,0.15)"
+            let icon_btn_i_j = $(`<button class="btn mini-icon-btn" data-id="${g_basic_list[letter][j]}"
+                                style="background-color: rgba(${color[0]},${color[1]},${color[2]},0.25)"
                                 ><img class="mini-icon" src="data/Extended/Left/${letter}/${g_basic_list[letter][j]}.gif"
-                                ></button>`);
+                                >${g_basic_list[letter][j]}</button>`);
 
             icon_list_i.append(icon_btn_i_j);
         }
 
-        let other_icon_i = $('<button class="btn mini-other-icon">...</button>');
+        let other_icon_i = $(`<button class="btn mini-other-icon" data-id="${letter}"
+                    style="background-color: rgba(${color[0]},${color[1]},${color[2]},0.25)"
+                    >...</button>`);
 
         icon_list_i.append(other_icon_i);
         icon_div_i.append(icon_list_i);
