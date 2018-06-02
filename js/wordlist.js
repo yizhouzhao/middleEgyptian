@@ -30,9 +30,39 @@ const g_basic_list = {
     "Z":["Z1","Z2","Z3","Z4","Z5","Z6","Z7","Z8","Z9","Z10","Z11"]
 };
 
+const g_classification = {
+    "A" : "Men",
+    "B" : "Women",
+    "C" : "Gods",
+    "D" : "Parts of Men",
+    "E" : "Mammals",
+    "F" : "Parts of Mammals",
+    "G" : "Birds",
+    "H" : "Parts of Birds",
+    "I" : "Reptiles",
+    "J" : "Unclassified",
+    "K" : "Fish",
+    "L" : "Insects",
+    "M" : "Plants",
+    "N" : "Sky",
+    "O" : "Buildings",
+    "P" : "Boats",
+    "Q" : "Furniture",
+    "R" : "Temple Furniture and Emblems",
+    "S" : "Clothing",
+    "T" : "Warfare and Hunting",
+    "U" : " Agriculture and Crafts",
+    "V" : "Rope, Baskets, and Cloth",
+    "W" : "Stone and Ceramic Vessels",
+    "X" : "Bread",
+    "Y" : "Writing, Games, Music",
+    "Z" : "Strokes and Figures"
+};
+
 function LoadIcons() {
     let word_ul = document.getElementById("word-ul");
     let word_content = document.getElementById("myTabContent");
+
     console.log(word_ul);
 
     for(let i = 0; i < 26; i++) {
@@ -54,9 +84,14 @@ function LoadIcons() {
 
         const color = [((i+1) * 100 % 256).toString(),(i * 200 % 256).toString(),(i * 300 % 256).toString()];
         // language=HTML
-        let icon_class_i = $(`<div class="col-md-2"><button data-id="${letter}" class="btn big-icon-btn"
+        let icon_class_i = $(`<div class="col-md-2"><button id="any-${letter}" class="btn big-icon-btn"
                             style="background-color: rgba(${color[0]},${color[1]},${color[2]},0.4)"
-                            ><img src="data/Extended/Left/${letter}/${letter}1.gif">?</button><div class="row">Meaning</div></div>`);
+                            ><img src="data/Extended/Left/${letter}/${letter}1.gif">Any ${letter}</button><div class="row">Meaning</div></div>`);
+
+        icon_class_i.first().click(function() {
+            $('#search-form-text-2').val($('#search-form-text-2').val() + letter + " ");
+        });
+
 
         icon_div_i.append(icon_class_i);
         let icon_list_i = $(`<div class="col-md-10"></div>`);
@@ -67,6 +102,9 @@ function LoadIcons() {
                                 ><img class="mini-icon" src="data/Extended/Left/${letter}/${g_basic_list[letter][j]}.gif"
                                 >${g_basic_list[letter][j]}</button>`);
 
+            icon_btn_i_j.click(function () {
+                $('#search-form-text-2').val($('#search-form-text-2').val() + g_basic_list[letter][j] + " ");
+            });
             icon_list_i.append(icon_btn_i_j);
         }
 

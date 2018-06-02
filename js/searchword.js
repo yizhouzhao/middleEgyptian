@@ -3,10 +3,18 @@
 /**
  * @return {number}
  */
-function SearchWord(){
+function SearchWord(mode){
     //Function to search words in the dictionary (word.js)
-    var value = document.getElementById("search-form-text").value;
 
+    let value;
+    let regex_value;
+    if(mode === 1)
+        value = document.getElementById("search-form-text").value;
+    else { // mode===2
+        value = document.getElementById("search-form-text-2").value;
+        regex_value = MatchSearch(value);
+        console.log(regex_value);
+    }
     if (value === ""){
         alert("please type something....");
         return 1;
@@ -18,7 +26,8 @@ function SearchWord(){
     var found_word_num = 0;
     var i = 0;
     for(; i < word_num; i++){
-        if (wordlist[i].pronunciation.indexOf(value) === -1) continue;
+        if (mode === 1 && wordlist[i].pronunciation.indexOf(value) === -1) continue;
+        else if(mode === 2 && wordlist[i].characters.match(regex_value) == null) continue;
 
         //Star Part
         found_word_num++;
@@ -115,4 +124,21 @@ function SearchWord(){
         return 1;
     }
     return 0;
+}
+
+
+function MatchSearch(pattern){
+    const characters = pattern.trim().split(" ");
+    let regex_need = ".*";
+    regex_need += characters[0];
+
+    if(characters[0].length === 1)
+        regex_need += "\\d+[A-Z]*";
+
+    for(let i = 1; i < characters.length; i++){
+        regex_need += "\\s-\\s" + characters[i];
+        if(characters[i].length === 1)
+            regex_need += "\\d+[A-Z]*";
+    }
+    return regex_need + ".*";
 }
